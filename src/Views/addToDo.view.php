@@ -5,12 +5,12 @@
 <form method="POST">
     <div class="container formularStyle">
         <div class="form-group">
-            <label for="commit" class="form-label mt-3">Quelle tâche avez-vous à ajouter ?</label>
-            <textarea class="form-control" id="commit" name="commit" style="height: 100px"></textarea>
+            <label for="ToDo" class="form-label mt-3">Quelle tâche avez-vous à ajouter ?</label>
+            <textarea class="form-control" id="ToDo" name="ToDo" style="height: 100px"></textarea>
             <?php 
-            if(isset($arrayError['commit'])){
+            if(isset($arrayError['ToDo'])){
                 ?>
-                    <p class="text-danger"><?= $this->arrayError['commit']?></p>
+                    <p class="text-danger"><?= $this->arrayError['ToDo']?></p>
                 <?php
             }
             ?>

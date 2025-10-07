@@ -21,10 +21,10 @@
                         <a class="nav-link active" aria-current="page" href="/ajouterTache">A faire</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">En cours</a>
+                        <a class="nav-link active" href="#">En cours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Terminé</a>
+                        <a class="nav-link active" href="#">Terminé</a>
                     </li>
                 </ul>
             </div>
