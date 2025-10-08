@@ -8,39 +8,40 @@ use Config\Database;
 class ToDo
 {
     private ?int $id_todos;
+    private ?string $title;
     private ?string $description;
-    private ?string $creation_date;
     private ?string $status;
 
-    public function __construct(?int $id_todos, ?string $description, ?string $creation_date, ?string $status)
+    public function __construct(?int $id_todos, ?string $title, ?string $description, ?string $status)
     {
         $this->id_todos = $id_todos;
+        $this->title = $title;
         $this->description = $description;
-        $this ->creation_date = $creation_date;
         $this->status = $status;
     }
 
     public function addToDo()
     {
         $pdo = Database::getConnection();
-        $sql = "INSERT INTO `todos` (`description`, `creation_date`,`status`) 
+        $sql = "INSERT INTO `todos` (`title`, `description`,`status`) 
                 VALUES (?,?,?)";
         $stmt = $pdo->prepare($sql);
-        return $stmt->execute([$this->description, $this->creation_date, $this->id_status]);
+        return $stmt->execute([$this->title, $this->description, $this->status]);
     }
+
 
 // Les GET
     public function getIdTodos(): ?int
     {
         return $this->id_todos;
     }
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
     public function getDescription(): ?string
     {
         return $this->description;
-    }
-    public function getCreationDate(): ?string
-    {
-        return $this->creation_date;
     }
     public function getStatus(): ?string
     {
@@ -52,13 +53,13 @@ class ToDo
     {
         $this->id_todos = $id_todos;
     }
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
     public function setText(?string $description): void
     {
         $this->description = $description;
-    }
-    public function setCreationDate(?string $creation_date): void
-    {
-        $this->creation_date = $creation_date;
     }
     public function setStatus(?string $status): void
     {

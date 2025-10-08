@@ -1,12 +1,12 @@
 <?php 
     require_once (__DIR__ . '/partials/head.view.php');
 ?>
-<h1>Nôtre liste</h1>
+<h1>Ajout dans la liste</h1>
 <form method="POST">
     <div class="container formularStyle">
         <div class="form-group">
             <label for="ToDo" class="form-label mt-3">Quelle tâche avez-vous à ajouter ?</label>
-            <textarea class="form-control" id="ToDo" name="ToDo" style="height: 100px"></textarea>
+            <textarea class="form-control" id="ToDo" name="ToDo" style="height: 50px"></textarea>
             <?php 
             if(isset($arrayError['ToDo'])){
                 ?>
@@ -15,7 +15,7 @@
             }
             ?>
         </div>
-        <button type="submit" name="addTache" class="btn mt-5 colorBtn">Ajouter</button>
+        <button type="submit" name="addTache" class="btn btn-info mt-5">Ajouter</button>
     </div>
 </form>
 <?php 
