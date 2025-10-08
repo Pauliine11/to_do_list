@@ -11,10 +11,12 @@ class ToDoController extends AbstractController
     public function addTache()
     {
         if(isset($_POST['addTache'])){
-            $title = htmlspecialchars($_POST['ToDo']);
-            $description = htmlspecialchars($_POST['ToDo']);
-            $status = htmlspecialchars($_POST['ToDo']);
-            $this->totalCheck('ToDo', $description, $title, $status);
+            $title = htmlspecialchars($_POST['title']);
+            $description = htmlspecialchars($_POST['description']);
+            $status = htmlspecialchars($_POST['title']);
+            $this->totalCheck('title', $title);
+            $this->totalCheck('description', $description);
+            $this->totalCheck('title', $status);
 
             if(empty($this->arrayError)){
                 $list = new ToDo(null, $title, $description, $status);
@@ -25,9 +27,22 @@ class ToDoController extends AbstractController
         require_once(__DIR__ . "/../Views/addToDo.view.php");
     }
 
-    public function getTacheById()
+    public function index()
     {
+        if(isset($_GET['id'])){
+            $id = htmlspecialchars($_GET['id']);
+            $list = new ToDo($id, null, null, null);
+            $myList = $list->getToDoById();
 
+            if($myList)
+            {
+                require_once(__DIR__ . "/../Views/task.view.php");
+            }else{
+                $this->redirectToRoute('/', 302);
+            }
+        }else{
+            $this->redirectToRoute('/', 302);
+        }
     }
 }
                

@@ -29,6 +29,23 @@ class ToDo
         return $stmt->execute([$this->title, $this->description, $this->status]);
     }
 
+    public function getToDoById()
+    {
+        $pdo = Database::getConnection();
+        $sql = "SELECT `id_todos`, `title`, `description`, `status`
+        FROM `todos` WHERE `id_todos`= ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->id_todos]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        var_dump($result);
+        if($result){
+            return new ToDo($result['id_todos'], $result["title"],$result["description"], $result['status']);
+        }else{
+            return false;
+        }
+    }
+
+
 
 // Les GET
     public function getIdTodos(): ?int
