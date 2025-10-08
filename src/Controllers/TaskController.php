@@ -32,11 +32,11 @@ class TaskController extends AbstractController
         if(isset($_GET['id'])){
             $id = htmlspecialchars($_GET['id']);
             $list = new Task($id, null, null, null);
-            $myList = $list->getToDoById();
+            $myList = $list->getTaskById();
 
             if($myList)
             {
-                require_once(__DIR__ . "/../Views/task.view.php");
+                require_once(__DIR__ . "/../Views/addTask.view.php");
             }else{
                 $this->redirectToRoute('/', 302);
             }

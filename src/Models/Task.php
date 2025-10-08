@@ -29,7 +29,7 @@ class Task
         return $stmt->execute([$this->title, $this->description, $this->status]);
     }
 
-    public function getToDoById()
+    public function getTaskById()
     {
         $pdo = Database::getConnection();
         $sql = "SELECT `id_todos`, `title`, `description`, `status`

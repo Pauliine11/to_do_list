@@ -6,14 +6,14 @@ if(isset($tasks)){
     foreach($tasks as $task)
     {
         ?>
-        <div class="container">
+        <div class="container" style="width: 600px">
             <div class="card my-2">
                 <div class="card-header text-bg-secondary">
                     <?= $task->getTitle(); ?>
                 </div>
                 <div class="card-body">
                     <figure>
-                        <blockquote class="blockquote">
+                        <blockquote class="blockquote" style="height: 15px">
                             <p><?= $task->getDescription(); ?></p>
                         </blockquote>
                     </figure>

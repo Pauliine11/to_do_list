@@ -8,7 +8,6 @@ var_dump($myList);
         <div class="card">
             <p><?= $myList->getTitle(); ?></p>
             <p><?= $myList->getDescription(); ?></p>
-            <p><?= $myList->getStatus(); ?></p>
         </div>
     </div>
 <?php
