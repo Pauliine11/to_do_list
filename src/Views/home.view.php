@@ -1,39 +1,31 @@
 <?php
 require_once(__DIR__ . "/partials/head.view.php");
 ?>
-<?php
-if(isset($tasks)){
-            foreach($tasks as $task)
-            {
-                ?>
-                    <div class="card my-2 text-bg-secondary">
-                        <div class="card-header">
-                            <?= $task->getTitle(); ?>
+<section>
+    <h1 class="text-center my-5">Les tâches</h1>
+    <div class="container p-3 mt-5">
+        <div class="card">
+            <div class="card-body p-2">
+                <!-- Liste -->
+                <ul class="list-group pt-3">
+                    <li class="list-group-item">
+                        <div class="d-flex">
+                            <div class="flex-grow-1 align-self-center"></div>
+                            <div>
+                                <a href="/" class="btn btn-outline-success"></a>
+                                <!-- Action à ajouter pour Supprimer -->
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <figure>
-                            <blockquote class="blockquote">
-                                <p><?= $task->getDescription(); ?></p>
-                            </blockquote>
-                            </figure>
-                            <?php if(isset($_POST['todos']) && $_POST['todos']['id_todos'] === $task->getIdTodos()){
-                                ?>
-                                <a class="btn btn-warning"  href="/modifTache?id=<?= $task->getIdTodos() ?>">Modifier</a>
-                                <?php
-                            } 
-                            if(isset($_POST['todos'])){
-                                ?>
-                                <form action="/supprimerTache" method="POST">
-                                    <input type="hidden" name="id" value="<?= $task->getIdTodos() ?>">
-                                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                                </form>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                    </div>
-                <?php
-            }
-        }
+                    </li>
+                    <li class="list-group-item text-center">
+                        <p><?= $myList->getTitle(); ?></p>
+                        <p><?= $myList->getDescription(); ?></p>
+                        <p><?= $myList->getStatus(); ?></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 <?php
 require_once(__DIR__ . "/partials/footer.view.php");
