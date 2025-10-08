@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Models\ToDo;
+use App\Models\Task;
 use App\Utils\AbstractController;
 
 
-class ToDoController extends AbstractController
+class TaskController extends AbstractController
 {
     public function addTache()
     {
@@ -19,19 +19,19 @@ class ToDoController extends AbstractController
             $this->totalCheck('title', $status);
 
             if(empty($this->arrayError)){
-                $list = new ToDo(null, $title, $description, $status);
+                $list = new Task(null, $title, $description, $status);
                 $list->addToDo();
                 $this->redirectToRoute('/', 200);
             }
         }
-        require_once(__DIR__ . "/../Views/addToDo.view.php");
+        require_once(__DIR__ . "/../Views/addTask.view.php");
     }
 
     public function index()
     {
         if(isset($_GET['id'])){
             $id = htmlspecialchars($_GET['id']);
-            $list = new ToDo($id, null, null, null);
+            $list = new Task($id, null, null, null);
             $myList = $list->getToDoById();
 
             if($myList)

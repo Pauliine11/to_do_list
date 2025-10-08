@@ -1,7 +1,7 @@
 <?php 
     require_once (__DIR__ . '/partials/head.view.php');
 ?>
-<h1 class="text-center my-5">Ajout dans la liste</h1>
+<h1 class="text-center my-5">Ajouter une tâche</h1>
 <form method="POST">
     <div class="container">
         <div class="form-group">
@@ -16,4 +16,3 @@
 
 <?php 
    require_once (__DIR__ . '/partials/footer.view.php');
-

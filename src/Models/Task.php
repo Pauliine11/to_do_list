@@ -5,7 +5,7 @@ namespace App\Models;
 use PDO;
 use Config\Database;
 
-class ToDo
+class Task
 {
     private ?int $id_todos;
     private ?string $title;
@@ -37,14 +37,34 @@ class ToDo
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$this->id_todos]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        var_dump($result);
+        //var_dump($result);
         if($result){
-            return new ToDo($result['id_todos'], $result["title"],$result["description"], $result['status']);
+            return new Task($result['id_todos'], $result["title"],$result["description"], $result['status']);
         }else{
             return false;
         }
     }
 
+
+    public function getAllTask()
+    {
+        $pdo = Database::getConnection();
+        $sql = "SELECT `id_todos`, `title`, `description`, `status`
+        FROM `todos`"; 
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $tasks = [];
+        //Je boucle sur mon tableau de resultat pour créer un nouvel objet de chaque resultat
+        foreach($result as $row){
+            //Je créer un nouvel objet
+            $task = new Task($row['id_todos'], $row['title'], $row['description'], $row['status']);
+            //Je l'insert dans mon tableau
+            $tasks[] = $task;
+        } 
+        return $tasks;  
+    }
 
 
 // Les GET
@@ -74,7 +94,7 @@ class ToDo
     {
         $this->title = $title;
     }
-    public function setText(?string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
