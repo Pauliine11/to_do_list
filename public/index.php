@@ -7,5 +7,6 @@ $router = new Router;
 
 $router->addRoute('/', 'HomeController', 'index');
 $router->addRoute('/ajouterTache', 'ToDoController', 'addTache');
+$router->addRoute('/404', 'ErrorController', 'notFound');
 
 $router->handleRequest();

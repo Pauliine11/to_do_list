@@ -54,7 +54,7 @@ class ToDo
     }
     public function setText(?string $description): void
     {
-        $this->description = $description
+        $this->description = $description;
     }
     public function setCreationDate(?string $creation_date): void
     {
