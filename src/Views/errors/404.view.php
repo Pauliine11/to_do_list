@@ -1,11 +1,9 @@
 <?php
 require_once(__DIR__ . "/../partials/head.view.php");
 ?>
-<div class="nav1">
-        <h1>page Erreur 404</h1>
-           <div class="img1">
-        <img src="assets/img/404.png" alt="">
-    </div>
-    </div>
+<div class="error">
+    <!-- <h1>Oops, il semblerait qu'une erreur s'est produite</h1> -->
+    <img class="img404" src="assets/img/error404.jpg" alt="image d'erreur 404" width="100%" height="100%">
+</div>
 <?php
 require_once(__DIR__ . "/../partials/footer.view.php");

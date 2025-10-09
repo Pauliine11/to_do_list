@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use PDO;
+use App\Models\Task;
 use Config\Database;
 
 class Task
@@ -45,7 +46,6 @@ class Task
         }
     }
 
-
     public function getAllTask()
     {
         $pdo = Database::getConnection();
@@ -66,6 +66,28 @@ class Task
         return $tasks;  
     }
 
+    public function getIdTask()
+    {
+        $pdo = Database::getConnection();
+        $sql = "SELECT `id_todos`, `title`, `description`, `status`
+        FROM `todos` WHERE `id_todos` = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->id_todos]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($result){
+            return new Task($result['id_todos'], $result['title'], $result['description'] , $result['status']);
+        }else{
+            return false;
+        }
+    }
+
+    public function editTask()
+    {
+        $pdo = Database::getConnection();
+        $sql = "UPDATE `todos` SET `title` = ?, `description` = ?, `status` = ? WHERE `id_todos` = ?";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$this->title, $this->description, $this->status, $this->id_todos]);
+    }
 
 // Les GET
     public function getIdTodos(): ?int
