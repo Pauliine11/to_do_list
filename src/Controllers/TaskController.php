@@ -50,31 +50,26 @@ class TaskController extends AbstractController
         if(isset($_GET['id'])){
             $id = htmlspecialchars($_GET['id'] );
             
-            //Je dois instancier l'objet Comment pour poouvoir utiliser la méthode getCommentById (pas oublier le use)
             $task = new Task($id, null, null, null);
             $myTask = $task->getIdTask();
-            /*
-            * si j'ai bien un commentaire dans la base de donner avec cet id
-            * si j'ai bien unse session avec user ( donc si une personne est connecté)
-            * si id_user et === à l'id du user qui a créer le commentaire
-            */
-            if($myTask && $_POST['todos'] && $_POST['todos']['id_todos'] === $myTask->getIdTask()){
+
+            if($myTask){
 
                 if(isset($_POST['editTask'])){
-                    $task = htmlspecialchars($_POST['title']);
-                    $task = htmlspecialchars($_POST['description']);
-                    $task = htmlspecialchars($_POST['status']);
+                    $title = htmlspecialchars($_POST['title']);
+                    $description = htmlspecialchars($_POST['description']);
+                    $status = htmlspecialchars($_POST['status']);
                     $this->totalCheck('title', $title);
                     $this->totalCheck('description', $description);
                     $this->totalCheck('status', $title);
                     if(empty($this->arrayError)){
-                        $newTask = new Task($id, $title, $description, $status, $myTask->getIdtask(), $myTask->getIdTodos());
+                        $newTask = new Task($id, $title, $description, $status);
                         $newTask->editTask();
-                        $this->redirectToRoute('/tache?id=' . $myTask->getIdTask() , 200);
+                        $this->redirectToRoute('/', 200);
                     }
                 }
 
-                require_once(__DIR__ . "/../Views/task.view.php");
+                require_once(__DIR__ . "/../Views/editTask.view.php");
             }else{
                 $this->RedirectToRoute('/', 302);
             }

@@ -15,6 +15,7 @@ if(isset($tasks)){
                     <figure>
                         <blockquote class="blockquote" style="height: 15px">
                             <p><?= $task->getDescription(); ?></p>
+                            <a href="/tache?id=<?= $task->getIdTodos() ?>">Voir +</a>
                         </blockquote>
                     </figure>
                 </div>

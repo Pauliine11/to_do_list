@@ -9,4 +9,5 @@ $router->addRoute('/', 'HomeController', 'index');
 $router->addRoute('/ajouterTache', 'TaskController', 'addTache');
 $router->addRoute('/tache', 'TaskController', 'index');
 $router->addRoute('/404', 'ErrorController', 'notFound');
+$router->addRoute('/modifier', 'TaskController', 'editTask');
 $router->handleRequest();
