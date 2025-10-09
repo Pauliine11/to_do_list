@@ -16,3 +16,19 @@ footer{
     position: absolute;
 }
 
+
+.img1 , img{
+    width: 50%;
+    height: 50%;
+}
+.nav1{
+    display: flex;
+    margin-top: 2%;
+    justify-content: space-around;
+}
+
+.nav1 h1{
+    margin-top: 3%;
+    font-weight: bold;
+    color: #3B7D80;
+}
